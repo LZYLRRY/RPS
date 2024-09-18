@@ -1,5 +1,4 @@
-//Create random number and picks choice for computer
-
+// Create random number and picks choice for computer
 function getComputerChoice() {
     let rndNumber = Math.random();
     let computerChoice;
@@ -15,12 +14,11 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-//Let user pick a choice
-
+// Let user pick a choice
 function getHumanChoice() {
     let humanChoice = prompt('Please pick your weapon of choice: rock, paper or scissors!\nClick cancel if you want to quit.');
 
-    if (humanChoice === null) return 'You quit the game.'
+    if (humanChoice === null) return 'You quit the game.';
     
     if (humanChoice.trim() === '') {
         alert('Error. Please pick one of the three options.\nClick cancel if you want to quit.');
@@ -40,5 +38,9 @@ function getHumanChoice() {
         return getHumanChoice();
     }
 }
+
+// Global score variables
+let humanScore  = 0;
+let computerScore = 0;
 
 console.log(getHumanChoice())
