@@ -16,12 +16,15 @@ function getComputerChoice() {
 
 // Let user pick a choice
 function getHumanChoice() {
-    let humanChoice = prompt('Please pick your weapon of choice: rock, paper or scissors!\nClick cancel if you want to quit.');
+    let humanChoice = prompt('Please pick your weapon of choice: rock, paper or scissors!');
 
-    if (humanChoice === null) return 'You quit the game.';
+    // if (humanChoice === null) return 'You quit the game.';
 
-    if (humanChoice.trim() === '') {
-        alert('Error. Please pick one of the three options.\nClick cancel if you want to quit.');
+    // if (humanChoice.trim() === '') {
+    //     alert('Error. Please pick one of the three options.\nClick cancel if you want to quit.');
+    //     return getHumanChoice();
+    // }
+    if (humanChoice === null) {
         return getHumanChoice();
     }
 
@@ -34,7 +37,7 @@ function getHumanChoice() {
     } else if (humanChoice === 'scissors') {
         return 'scissors';
     } else {
-        alert('Error. Please pick one of the three options.\nClick cancel if you want to quit.');
+        alert('Error. Please pick one of the three options.');
         return getHumanChoice();
     }
 }
@@ -42,6 +45,8 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         console.log('It\'s a draw!')
+        computerScore++
+        humanScore++
     } else if (humanChoice === 'rock' && computerChoice === 'paper') {
         console.log('You lose')
         computerScore++
@@ -55,9 +60,6 @@ function playRound(humanChoice, computerChoice) {
         console.log('You win')
         humanScore++
     }
-
-    // console.log(humanScore);
-    // console.log(computerScore);
 }
 
 // Global score variables
@@ -65,8 +67,19 @@ let humanScore = 0;
 let computerScore = 0;
 
 // Global returned variables
-let humanChoice = getHumanChoice()
-let computerChoice = getComputerChoice()
+let humanChoice;
+let computerChoice;
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        computerChoice = getComputerChoice()
+        humanChoice = getHumanChoice()
+        playRound(humanChoice, computerChoice)
+    }
+    console.log(`You scored ${humanScore} points\nThe computer scored ${computerScore} points`)
+}
+
+playGame();
 
 
 
