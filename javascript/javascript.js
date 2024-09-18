@@ -4,11 +4,11 @@ function getComputerChoice() {
     let computerChoice;
 
     if (rndNumber <= 0.33) {
-        computerChoice = 'Rock';
+        computerChoice = 'rock';
     } else if (rndNumber > 0.33 && rndNumber <= 0.66) {
-        computerChoice = 'Paper';
+        computerChoice = 'paper';
     } else {
-        computerChoice = 'Scissors';
+        computerChoice = 'scissors';
     }
 
     return computerChoice;
@@ -19,7 +19,7 @@ function getHumanChoice() {
     let humanChoice = prompt('Please pick your weapon of choice: rock, paper or scissors!\nClick cancel if you want to quit.');
 
     if (humanChoice === null) return 'You quit the game.';
-    
+
     if (humanChoice.trim() === '') {
         alert('Error. Please pick one of the three options.\nClick cancel if you want to quit.');
         return getHumanChoice();
@@ -28,19 +28,47 @@ function getHumanChoice() {
     humanChoice = humanChoice.toLowerCase();
 
     if (humanChoice === 'rock') {
-        return 'Rock';
+        return 'rock';
     } else if (humanChoice === 'paper') {
-        return 'Paper';
+        return 'paper';
     } else if (humanChoice === 'scissors') {
-        return 'Scissors';
+        return 'scissors';
     } else {
         alert('Error. Please pick one of the three options.\nClick cancel if you want to quit.');
         return getHumanChoice();
     }
 }
 
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log('It\'s a draw!')
+    } else if (humanChoice === 'rock' && computerChoice === 'paper') {
+        console.log('You lose')
+        computerScore++
+    } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
+        console.log('You lose')
+        computerScore++
+    } else if (humanChoice === 'scissors' && computerChoice === 'rock') {
+        console.log('You lose')
+        computerScore++
+    } else {
+        console.log('You win')
+        humanScore++
+    }
+
+    // console.log(humanScore);
+    // console.log(computerScore);
+}
+
 // Global score variables
-let humanScore  = 0;
+let humanScore = 0;
 let computerScore = 0;
 
-console.log(getHumanChoice())
+// Global returned variables
+let humanChoice = getHumanChoice()
+let computerChoice = getComputerChoice()
+
+
+
+
+
