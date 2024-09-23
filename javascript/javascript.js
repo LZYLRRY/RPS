@@ -43,6 +43,7 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+
     if (humanChoice === computerChoice) {
         console.log('It\'s a draw!')
         computerScore++
@@ -76,13 +77,25 @@ let computerChoice;
 
 // playGame();
 
-const container = document.querySelector('#container')
+const container = document.querySelector('#container');
+const choice = ['Rock', 'Paper', 'Scissors'];
 
 for (let i = 0; i < 3; ++i) {
-    const choice = ['Rock', 'Paper', 'Scissors'];
     const btn = document.createElement('button');
+
     btn.textContent = choice[i];
+    btn.id = choice[i].toLowerCase();
     container.appendChild(btn);
 }
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    // and for each one we add a 'click' listener
+    button.addEventListener("click", () => {
+        playRound(button.textContent.toLowerCase(), getComputerChoice());
+        console.log(button.textContent)
+    });
+});
 
 
