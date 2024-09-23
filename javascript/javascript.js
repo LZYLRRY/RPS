@@ -4,11 +4,11 @@ function getComputerChoice() {
     let computerChoice;
 
     if (rndNumber <= 0.33) {
-        computerChoice = 'rock';
+        computerChoice = 'Rock';
     } else if (rndNumber > 0.33 && rndNumber <= 0.66) {
-        computerChoice = 'paper';
+        computerChoice = 'Paper';
     } else {
-        computerChoice = 'scissors';
+        computerChoice = 'Scissors';
     }
 
     return computerChoice;
@@ -42,30 +42,50 @@ function getHumanChoice() {
     }
 }
 
-function playRound(humanChoice, computerChoice) {
-
-    if (humanChoice === computerChoice) {
-        console.log('It\'s a draw!')
-        computerScore++
-        humanScore++
-    } else if (humanChoice === 'rock' && computerChoice === 'paper') {
-        console.log('You lose')
-        computerScore++
-    } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-        console.log('You lose')
-        computerScore++
-    } else if (humanChoice === 'scissors' && computerChoice === 'rock') {
-        console.log('You lose')
-        computerScore++
-    } else {
-        console.log('You win')
-        humanScore++
-    }
-}
-
 // Global score variables
 let humanScore = 0;
 let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
+
+    if (humanChoice === computerChoice) {
+        console.log('It\'s a draw!')
+        // spanComputer.textContent = ++computerScore
+        // spanHuman.textContent = ++humanScore
+    } else if (humanChoice === 'rock' && computerChoice === 'paper') {
+        console.log('You lose')
+        spanComputer.textContent = ++computerScore
+    } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
+        console.log('You lose')
+        spanComputer.textContent = ++computerScore
+    } else if (humanChoice === 'scissors' && computerChoice === 'rock') {
+        console.log('You lose')
+        spanComputer.textContent = ++computerScore
+    } else {
+        console.log('You win')
+        spanHuman.textContent = ++humanScore
+    }
+
+
+
+    if (computerScore === 5) {
+        alert('You lost!')
+        humanScore = 0;
+        computerScore = 0;
+        spanHuman.textContent = humanScore
+        spanComputer.textContent = computerScore
+    } else if (humanScore === 5) {
+        alert('You won!')
+        humanScore = 0;
+        computerScore = 0;
+        spanHuman.textContent = humanScore
+        spanComputer.textContent = computerScore
+    }
+}
+
+
 
 // Global returned variables
 let humanChoice;
@@ -77,25 +97,31 @@ let computerChoice;
 
 // playGame();
 
-const container = document.querySelector('#container');
-const choice = ['Rock', 'Paper', 'Scissors'];
+// const container = document.querySelector('#container');
+// const choice = ['Rock', 'Paper', 'Scissors'];
 
-for (let i = 0; i < 3; ++i) {
-    const btn = document.createElement('button');
+// // for (let i = 0; i < 3; ++i) {
+// //     const btn = document.createElement('button');
 
-    btn.textContent = choice[i];
-    btn.id = choice[i].toLowerCase();
-    container.appendChild(btn);
-}
+// //     btn.textContent = choice[i];
+// //     btn.id = choice[i].toLowerCase();
+// //     container.appendChild(btn);
+// // }
+
+// container.appendChild(div)
+
+const spanComputer = document.querySelector('.computer-score');
+const spanHuman = document.querySelector('.human-score');
+
+spanComputer.textContent = computerScore;
+spanHuman.textContent = humanScore;
 
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
     // and for each one we add a 'click' listener
     button.addEventListener("click", () => {
-        playRound(button.textContent.toLowerCase(), getComputerChoice());
-        console.log(button.textContent)
+        playRound(button.textContent, getComputerChoice());
     });
 });
-
 

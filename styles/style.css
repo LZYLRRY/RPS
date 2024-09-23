@@ -1,0 +1,37 @@
+body {
+    background-color: #2541b2;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #000D2A;
+}
+
+#container {
+    background-color: #03256c;
+    box-shadow: 10px 10px 10px 10px #03256c;
+    width: 500px;
+    border-radius: 15px;
+    padding: 25px;
+    color: #06bee1;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 25px;
+}
+
+button {
+    background-color: #06bee1;
+    border: 0px;
+    width: 100px;
+    height: 25px;
+    color: #000D2A;
+    cursor: pointer;
+    border-radius: 0px 0px 0px 5px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
