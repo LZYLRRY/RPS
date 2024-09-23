@@ -70,18 +70,19 @@ let computerScore = 0;
 let humanChoice;
 let computerChoice;
 
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        computerChoice = getComputerChoice()
-        humanChoice = getHumanChoice()
-        playRound(humanChoice, computerChoice)
-    }
-    console.log(`You scored ${humanScore} points\nThe computer scored ${computerScore} points`)
+// function playGame() {
+
+// }
+
+// playGame();
+
+const container = document.querySelector('#container')
+
+for (let i = 0; i < 3; ++i) {
+    const choice = ['Rock', 'Paper', 'Scissors'];
+    const btn = document.createElement('button');
+    btn.textContent = choice[i];
+    container.appendChild(btn);
 }
-
-playGame();
-
-
-
 
 
